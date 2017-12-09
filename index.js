@@ -42,7 +42,6 @@ module.exports = config => {
       
       left++
       right--
-
     }
 
     return true
