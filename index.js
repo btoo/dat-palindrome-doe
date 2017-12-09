@@ -10,8 +10,6 @@ const defaultConfig = {
   // algorithm functions
   filter: char => /^[a-z0-9]+$/i.test(char), // isAlphaNumeric
   comparator: value => (a, b) => value[a] && value[b] && value[a].toLowerCase() === value[b].toLowerCase(), // leftEqualsRightWhenBothLowercase
-  
-
 }
 
 module.exports = config => {
@@ -44,7 +42,6 @@ module.exports = config => {
       
       left++
       right--
-
     }
 
     return true
