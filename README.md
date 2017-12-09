@@ -18,3 +18,16 @@ const defaultConfig = {
   
 }
 ```
+
+usage with default configs
+```js
+const isPalidrome = require('dat-palindrome-doe')()
+console.log(isPalindrome('abcd_DCBA')) // true
+```
+usage with custom configs (case-senstitive comparator)
+```js
+const isPalidrome = require('dat-palindrome-doe')({
+  compare: (a, b) => !!a && !!b && a === b
+})
+console.log(isPalindrome('abcd_DCBA')) // false
+```

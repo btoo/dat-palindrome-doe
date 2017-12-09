@@ -70,8 +70,10 @@ describe("isPalindrome with default settings", () => {
   
   test('-1 is not a palindrome', () => expect(isPalindrome(-1)).toBeTruthy())
   
-  test('"!@#$" is not a palindrome', () => expect(isPalindrome('!@#$', false)).toBeFalsy())
+  test('"!@#$" is not a palindrome', () => expect(isPalindrome('!@#$')).toBeFalsy())
   
-  test('"!@#$#@!" is a palindrome', () => expect(isPalindrome('!@#$#@!', false)).toBeFalsy())
+  test('"!@#$#@!" is a palindrome', () => expect(isPalindrome('!@#$#@!')).toBeFalsy())
+
+  test('"abcd_ABCD" is a palindrome', () => expect(isPalindrome("abcd_DCBA")).toBeTruthy())
   
 })

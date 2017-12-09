@@ -1,6 +1,6 @@
 const datPalindromeDoe = require('../index')
 
-describe("isPalindrome with custom filter and comparator functions", () => {
+describe("isPalindrome with custom filter", () => {
   
   const isPalindrome = datPalindromeDoe({
     filter: char => /[\w!@#\$%\^\&*\)\(+=._-]/i.test(char)
@@ -48,8 +48,19 @@ describe("isPalindrome with custom filter and comparator functions", () => {
   
   test('-1 is not a palindrome', () => expect(isPalindrome(-1)).toBeFalsy())
   
-  test('"!@#$" is not a palindrome', () => expect(isPalindrome('!@#$', false)).toBeFalsy())
+  test('"!@#$" is not a palindrome', () => expect(isPalindrome('!@#$')).toBeFalsy())
   
-  test('"!@#$#@!" is a palindrome', () => expect(isPalindrome('!@#$#@!', false)).toBeTruthy())
+  test('"!@#$#@!" is a palindrome', () => expect(isPalindrome('!@#$#@!')).toBeTruthy())
+
+})
+
+
+describe("isPalindrome with custom comparator", () => {
+
+  const isPalindrome = datPalindromeDoe({
+    compare: (a, b) => !!a && !!b && a === b
+  })
+
+  test('"abcd_ABCD" is a palindrome', () => expect(isPalindrome("abcd_DCBA")).toBeFalsy())
 
 })
