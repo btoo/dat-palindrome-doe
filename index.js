@@ -9,9 +9,8 @@ const defaultConfig = {
 
   // algorithm functions
   filter: char => /^[a-z0-9]+$/i.test(char), // isAlphaNumeric
-  comparator: value => (a, b) => value[a] && value[b] && value[a].toLowerCase() === value[b].toLowerCase(), // leftEqualsRightWhenBothLowercase
+  compare: (a, b) => !!a && !!b && a.toLowerCase() === b.toLowerCase(), // leftEqualsRightWhenBothLowercase
   
-
 }
 
 module.exports = config => {
@@ -21,7 +20,7 @@ module.exports = config => {
     specialIs,
     specialIsNot,
     filter,
-    comparator,
+    compare,
   } = { ...defaultConfig, ...config }
 
   return v => {
@@ -30,7 +29,6 @@ module.exports = config => {
     if(specialIsNot(v) || !validateInput(v)) return false
 
     const value = v.toString()
-        , compare = comparator(value)
 
     let left = 0
       , right = value.length - 1
@@ -40,7 +38,7 @@ module.exports = config => {
       while(!filter(value[left])) left++
       while(!filter(value[right])) right--
 
-      if(!compare(left, right)) return false
+      if(!compare(value[left], value[right])) return false
       
       left++
       right--
